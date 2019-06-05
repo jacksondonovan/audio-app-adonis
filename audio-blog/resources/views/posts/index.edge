@@ -1,7 +1,33 @@
 @layout('main')
 
 @section('content')
+  <h1>Create New Audio Post</h1>
+  <form action="/posts" method="POST">
+  {{ csrfField() }}
+    <div class="form-group">
+      <label>File</label>
+      <input type="text" name="file" class="form-control"
+      placeholder="(.mp3, .au, .ape, .wav)" />
+    </div>
+    <div>
+      <label>Author</label>
+      <input type="text" name="author" class="form-control"
+      placeholder="Author's Name" />
+    </div>
+    <br />
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+
+
+
   <h1>{{ title }}</h1>
+
+  @if(old('notification'))
+    <div class="alert alert-success">
+      {{ old('notification')}}
+    </div>
+  @endif
+
   <ul class="list-group">
   @each(post in posts)
     <li class="list-group-item">

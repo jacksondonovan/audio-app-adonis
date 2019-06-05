@@ -21,3 +21,5 @@ Route.on('/').render('home')
 Route.get('/posts', 'PostController.index')
 
 Route.get('/posts/add', 'PostController.add')
+
+Route.post('/posts', 'PostController.store')
