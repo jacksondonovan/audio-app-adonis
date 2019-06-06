@@ -1,15 +1,13 @@
 'use strict'
 
-//Bring in model
-const Post = use('App/Models/Post')
+const UserFile = use('App/Models/UserFile')
 
 class PostController {
   async index({ view }) {
-    const posts = await Post.all();
+    const user_files = await UserFile.all()
 
     return view.render('posts.index', {
-      title: 'Latest Posts',
-      posts: posts.toJSON()
+      user_files: user_files.toJSON()
     })
   }
 
@@ -18,12 +16,12 @@ class PostController {
   }
 
   async store({ request, response, session }) {
-    const post = new Post();
+    const user_file = new UserFile()
 
-    post.file = request.input('file')
-    post.author = request.input('author')
+    user_file.file = request.input('file')
+    user_file.author = request.input('author')
 
-    await post.save()
+    await user_file.save()
 
     session.flash({ notification: 'Post Added!' })
 

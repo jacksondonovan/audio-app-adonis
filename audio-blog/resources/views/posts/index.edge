@@ -1,40 +1,48 @@
 @layout('main')
 
 @section('content')
-  <h1>Create New Audio Post</h1>
+  <h2>Create New Audio Post</h2>
   <form action="/posts" method="POST">
   {{ csrfField() }}
+
     <div class="form-group">
-      <label>File</label>
-      <input type="text" name="file" class="form-control"
-      placeholder="(.mp3, .au, .ape, .wav)" />
+      <label style="font-size:20px;margin-right:5px;">File</label><span>(.mp3, .au, .ape, .wav)</span>
+      <br />
+      <input type="file"
+             value="path"
+             name="file"
+      />
     </div>
     <div>
-      <label>Author</label>
+      <label style="font-size:20px;">Author</label>
       <input type="text" name="author" class="form-control"
       placeholder="Author's Name" />
     </div>
+
     <br />
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
 
 
 
-  <h1>{{ title }}</h1>
 
+
+  <h2>All Uploads</h2>
   @if(old('notification'))
     <div class="alert alert-success">
-      {{ old('notification')}}
+      {{ old('notification') }}
     </div>
   @endif
 
   <ul class="list-group">
-  @each(post in posts)
+  @each(post in user_files)
+
     <li class="list-group-item">
       File: {{ post.file }}
       <br />
       Recorded by: {{ post.author }}
     </li>
+
   @endeach
   </ul>
 @endsection
