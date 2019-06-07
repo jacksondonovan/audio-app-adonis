@@ -2,7 +2,7 @@
 const axios = require('axios')
 
 const UserFile = use('App/Models/UserFile')
-const ApiEndpoint = 'https://gtvnoefe9c.execute-api.us-east-1.amazonaws.com/audio/uploads'
+const ApiEndpoint = 'https://gtvnoefe9c.execute-api.us-east-1.amazonaws.com/audio/uploads/'
 
 class PostController {
   async index({ view }) {
@@ -29,9 +29,9 @@ class PostController {
       file: request.input('file'),
       author: request.input('author')
     }).then(function (response) {
-      // console.log(response);
+      console.log(response);
     }).catch(function (error) {
-      // console.log(error);
+      console.log(error);
     });
 
     user_file.file = ApiEndpoint + request.input('file')
