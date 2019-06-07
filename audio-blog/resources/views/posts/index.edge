@@ -11,11 +11,16 @@
       <input type="file"
              value="path"
              name="file"
+             required
       />
     </div>
     <div>
       <label style="font-size:20px;">Author</label>
-      <input type="text" name="author" class="form-control"
+      <input class="form-control"
+             type="text"
+             name="author"
+             required
+
       placeholder="Author's Name" />
     </div>
 
@@ -36,13 +41,17 @@
 
   <ul class="list-group">
   @each(post in user_files)
-
     <li class="list-group-item">
-      File: {{ post.file }}
+
+    <audio controls>
+      <source src={{ post.file }} type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+      <br />
+      File: {{ post.abbrev_file }}
       <br />
       Recorded by: {{ post.author }}
     </li>
-
   @endeach
   </ul>
 @endsection
